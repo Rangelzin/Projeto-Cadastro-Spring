@@ -1,5 +1,6 @@
-package dev.rangel.Projeto_Cadastro_Spring;
+package dev.rangel.Projeto_Cadastro_Spring.Ninjas;
 
+import dev.rangel.Projeto_Cadastro_Spring.Missoes.MissoesModel;
 import jakarta.persistence.*;
 
 // Entity transforma uma classe em uma entidade do BD
@@ -13,6 +14,11 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+
+    // @ManyToOne - Um ninja tem uma única missão
+    @ManyToOne
+    @JoinColumn(name = "missoes_id") // Foreign Key
+    private MissoesModel missoes;
 
     // Construtores
     public NinjaModel() {
