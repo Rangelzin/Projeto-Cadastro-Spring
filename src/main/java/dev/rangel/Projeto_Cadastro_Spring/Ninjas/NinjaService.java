@@ -2,6 +2,7 @@ package dev.rangel.Projeto_Cadastro_Spring.Ninjas;
 
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NinjaService {
@@ -16,4 +17,11 @@ public class NinjaService {
     public List<NinjaModel> ListarNinjas() {
         return NinjaRepository.findAll();
     }
+
+    // Listar Ninjas por ID
+    public NinjaModel ListarNInjasPorId(Long id) {
+        Optional<NinjaModel> ninja = NinjaRepository.findById(id);
+        return ninja.orElse(null);
+    }
+
 }
