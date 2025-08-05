@@ -3,7 +3,7 @@ package dev.rangel.Projeto_Cadastro_Spring.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/ninjas")
 public class NinjaController {
 
     @GetMapping("/boasVindas")
