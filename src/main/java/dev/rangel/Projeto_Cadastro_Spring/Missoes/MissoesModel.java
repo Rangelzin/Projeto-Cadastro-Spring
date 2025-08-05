@@ -1,5 +1,6 @@
 package dev.rangel.Projeto_Cadastro_Spring.Missoes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.rangel.Projeto_Cadastro_Spring.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class MissoesModel {
 
     // @OneToMany - uma missão pode ter vários Ninjas
     @OneToMany(mappedBy = "missoes")
+    @JsonIgnore
     private List<NinjaModel> ninja;
 
 
