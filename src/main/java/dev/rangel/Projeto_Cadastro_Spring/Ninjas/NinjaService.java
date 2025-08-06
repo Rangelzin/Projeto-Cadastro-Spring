@@ -16,7 +16,6 @@ public class NinjaService {
     // Criar um novo Ninja
     public NinjaModel CriarNinja(NinjaModel ninja) {
         return NinjaRepository.save(ninja);
-
     }
 
     // Listar todos os Ninjas
@@ -35,4 +34,12 @@ public class NinjaService {
         NinjaRepository.deleteById(id);
     }
 
+    // Atualizar um Ninja
+    public NinjaModel atualizarNinja(Long id,NinjaModel ninjaAtualizado) {
+        if (NinjaRepository.existsById(id)) {
+            ninjaAtualizado.setId(id);
+            return NinjaRepository.save(ninjaAtualizado);
+        }
+        return null;
+    }
 }
