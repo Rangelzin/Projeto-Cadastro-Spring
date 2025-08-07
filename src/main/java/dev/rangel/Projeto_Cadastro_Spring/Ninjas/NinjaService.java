@@ -8,14 +8,18 @@ import java.util.Optional;
 public class NinjaService {
 
     private NinjaRepository NinjaRepository;
+    private NinjaMapper NinjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
-        NinjaRepository = ninjaRepository;
+    public NinjaService(NinjaMapper ninjaMapper, NinjaRepository ninjaRepository) {
+        this.NinjaMapper = ninjaMapper;
+        this.NinjaRepository = ninjaRepository;
     }
 
     // Criar um novo Ninja
-    public NinjaModel CriarNinja(NinjaModel ninja) {
-        return NinjaRepository.save(ninja);
+    public NinjaDTO CriarNinja(NinjaDTO ninjaDTO) {
+        NinjaModel ninja = NinjaMapper.map(ninjaDTO);
+        ninja = NinjaRepository.save(ninja);
+        return NinjaMapper.map(ninja);
     }
 
     // Listar todos os Ninjas
