@@ -1,10 +1,18 @@
 package dev.rangel.Projeto_Cadastro_Spring.Missoes;
 
+import dev.rangel.Projeto_Cadastro_Spring.Ninjas.NinjaService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/missoes")
 public class MissoesController {
+
+    private MissoesService missoesService;
+    public MissoesController(MissoesService missoesService) {
+        this.missoesService = missoesService;
+    }
 
     @GetMapping("/boasVindas")
     public String boasVindas() {
@@ -13,31 +21,31 @@ public class MissoesController {
 
     // Adicionar Missoes (Create)
     @PostMapping("/adcionar")
-    public String CriarMissao() {
-        return "Missão Criada";
+    public MissoesDTO CriarMissao(@RequestBody MissoesDTO missao) {
+        return missoesService.CriarMissao(missao);
     }
 
     // Mostrar Missoes (Read)
-    @GetMapping("/todos")
-    public String MostrarMissao() {
-        return "Mostrar Todos as Missões ";
+    @GetMapping("/todas")
+    public List<MissoesDTO> MostrarMissao() {
+        return missoesService.ListarMissoes();
     }
 
     // Mostrar Missoes por ID (Read)
-    @GetMapping("/todosID")
-    public String MostrarMissaoPorID() {
-        return "Mostrar Missao Por ID";
+    @GetMapping("/todas/{ID}")
+    public MissoesDTO MostrarMissaoPorID(@PathVariable Long ID) {
+        return missoesService.ListarMissoesPorId(ID);
     }
 
-    // Alterar dados do Missoes (Uptade)
-    @PutMapping("/alterar")
-    public String alterarMissaoPorID() {
-        return "Alterar Missao Por ID";
+    // Alterar dados de Missoes (Uptade)
+    @PutMapping("/alterar/{ID}")
+    public MissoesDTO alterarMissaoPorID(@PathVariable Long ID,@RequestBody MissoesDTO missaoAtualizada) {
+        return missoesService.AtualizarMissao(ID,missaoAtualizada);
     }
 
     // Deletar Missoes (Delete)
-    @DeleteMapping("/deletarID")
-    public String deletarMissaoPorID() {
-        return "Deletar Missao Por ID";
+    @DeleteMapping("/deletar/{ID}")
+    public void deletarMissaoPorID(@PathVariable Long ID) {
+        missoesService.DeletarMissaoPorId(ID);
     }
 }
