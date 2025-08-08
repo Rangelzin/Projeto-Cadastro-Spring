@@ -2,9 +2,7 @@ package dev.rangel.Projeto_Cadastro_Spring.Ninjas;
 
 import dev.rangel.Projeto_Cadastro_Spring.Missoes.MissoesModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 // Entity transforma uma classe em uma entidade do BD
 @Entity
@@ -12,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // Construtores
 @AllArgsConstructor // Construtores
 @Data // Getters e Setters
+@ToString(exclude = "missoes")
 public class NinjaModel {
 
     @Id

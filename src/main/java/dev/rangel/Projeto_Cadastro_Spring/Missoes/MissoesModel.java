@@ -3,9 +3,7 @@ package dev.rangel.Projeto_Cadastro_Spring.Missoes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.rangel.Projeto_Cadastro_Spring.Ninjas.NinjaModel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor // Construtores
 @AllArgsConstructor // Construtores
 @Data // Getters e Setters
+@ToString
 public class MissoesModel {
 
     @Id
